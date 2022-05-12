@@ -3,7 +3,9 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-{{article.nom}}
-{{article.prix}}
+<h3>Nom: {{article.nom|upper}} </h3> </br>
+<h3>Prix: {{article.prix}}</h3> </br>
+
+
 
 {% endblock %}
