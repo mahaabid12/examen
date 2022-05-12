@@ -7,6 +7,7 @@ use App\Form\ArticleType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
@@ -21,9 +22,24 @@ class ArticleController extends AbstractController
             'articles' => $articles ,
         ]);
     }
+    #[Route('/article/detail/{id} ', name: 'article.detail')]
+    public function  detail( MAarticle $article=null){
+        if (!$article){
+            $this->addFlash('error','Article not found'); 
+            return $this->redirectToRoute('app_article');
+
+        }else{
+            return $this->render('article/detail.html.twig', [
+                'article' => $article,
+            ]);
+
+        }
+
+    }
+
 
     #[Route('/article/edit/{id?0} ', name: 'article.edit')]
-    public function addEtudiant(ManagerRegistry $doctrine , Request $request, MAarticle $article=null): Response
+    public function editArticle(ManagerRegistry $doctrine , Request $request, MAarticle $article=null): Response
     {
       
         if (!$article){

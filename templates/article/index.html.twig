@@ -15,7 +15,9 @@
         <td>{{art.nom}}</td>
         <td>{{art.prix}}</td>
         <td>
-          <button>Détails</button>
+         <a href="{{path('article.detail',{id:art.id})}}"><button>Détails</button></a>
+         <a href="{{path('article.edit',{id:art.id})}}"><button>Modifier </button></a>
+         <a href="{{path('article.remove',{id:art.id})}}"><button>Modifier </button></a>
         </td>
     </tr>
     {% endfor %}
