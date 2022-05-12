@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+<table class="table table-stripe">
+    <tr class="table-primary" >
+        <th >Nom</th>
+        <th class="table-primary">Prix</th>
+        <th class="table-primary">Actions</th>
+    </tr >
+
+    {% for art in articles %}
+    <tr >
+        <td>{{art.nom}}</td>
+        <td>{{art.prix}}</td>
+        <td>
+          <button>Détails</button>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
